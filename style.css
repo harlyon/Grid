@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body {
+  background-size: cover;
+}
+
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title img {
+  width: 100%;
+  height: auto;
+}
+
+.grid-1 {
+  display: grid;
+  width: 96%;
+  max-width: 900px;
+  margin: 2% auto;
+
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 25px;
+
+  grid-template-areas: "t        t       t"
+    "d23      d20     d12"
+    "d2       d14     d4"
+    "d5       d22     d16"
+    "d1       d7      d9"
+    "d10      d11     d18"
+    "d13      d3      d15"
+    "d6       d17     d8"
+    "d19      d24     d21";
+}
+
+.grid-1 input {
+  display: none;
+}
+
+label {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  cursor: pointer;
+
+  display: flex;
+  min-height: 100%;
+  width: 100%;
+  height: 120px;
+}
+
+.door {
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: all 300ms;
+  border: 2px solid transparent;
+  border-radius: 10px;
+}
+
+.door div {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.door .back {
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transform: rotateY(180deg);
+}
+
+label:hover .door {
+  border-color: #385052;
+}
+
+:checked+.door {
+  transform: rotateY(180deg);
+}
+
+.title {
+  grid-area: t;
+}
+
+.day-1 {
+  grid-area: d1;
+}
+
+.day-24 {
+  grid-area: d24;
+}
+
+
+@media only screen and (min-width: 500px) {
+  .grid-1 {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: "t     t     t     d2      d7      d8"
+      "t     t     t     d4      d11     d12"
+      "t     t     t     d19     d9      d13"
+      "d6    d1    d24   d24     d21     d20"
+      "d17   d18   d24   d24     d5      d22"
+      "d3    d23   d16   d14     d10     d15";
+  }
+
+}
